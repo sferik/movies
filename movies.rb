@@ -29,7 +29,7 @@ class Movies < Sinatra::Base
 
   get '/movies' do
     @id = params[:id]
-    file = open("http://www.omdbapi.com/?i=#{URI.escape(@id)}")
+    file = open("http://www.omdbapi.com/?i=#{URI.escape(@id)}&tomatoes=true")
     @result = JSON.load(file.read)
     @actors = @result["Actors"].split(", ")
     @directors = @result["Director"].split(", ")
