@@ -1,0 +1,11 @@
+<h2>
+  Search results for <%= @query %>
+</h2>
+<ol>
+  <% @results.each do |result| %>
+    <li>
+      <a href="/movies?id=<%= result["imdbID"] %>"><%= result["Title"] %></a>
+      (<%= result["Year"] %>)
+    </li>
+  <% end %>
+</ol>
