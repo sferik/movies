@@ -10,7 +10,7 @@
   <ol>
     <% @results.each do |result| %>
       <li>
-        <a href="/movies?id=<%= result["imdbID"] %>"><%= result["Title"] %></a>
+        <a href="/movies?id=<%= result["imdbID"] %>&amp;q=<%= URI.escape(@query) %>"><%= result["Title"] %></a>
         (<%= result["Year"] %>)
       </li>
     <% end %>

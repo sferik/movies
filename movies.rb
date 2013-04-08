@@ -41,6 +41,7 @@ class Movies < Sinatra::Base
 
   get '/movies' do
     @id = params[:id]
+    @query = params[:q]
     file = open("http://www.omdbapi.com/?i=#{URI.escape(@id)}&tomatoes=true")
     @result = JSON.load(file.read)
     @page_title += ": #{@result["Title"]}"
