@@ -6,6 +6,7 @@
   <% end %>
   for <q><%= @query %></q>
 </h2>
+<%= erb :search_form %>
 <% unless @results.empty? %>
   <ol>
     <% @results.each do |result| %>
