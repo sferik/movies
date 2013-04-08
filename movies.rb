@@ -23,7 +23,7 @@ class Movies < Sinatra::Base
     @query = params[:q]
     @button = params[:button]
     file = open("http://www.omdbapi.com/?s=#{URI.escape(@query)}")
-    @results = JSON.load(file.read)["Search"]
+    @results = JSON.load(file.read)["Search"] || []
     erb :results
   end
 
