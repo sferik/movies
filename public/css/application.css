@@ -134,7 +134,6 @@ dl {
 }
 
 dt {
-  clear: left;
   float: left;
   text-align: right;
   width: 150px;
@@ -157,10 +156,6 @@ dd {
 
 dd ol, dd ul {
   margin: 0 auto;
-}
-
-dd li {
-  font-size: 14px;
 }
 
 footer {
