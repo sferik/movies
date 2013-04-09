@@ -1,0 +1,10 @@
+<h2>
+  <% if @results.empty? %>
+    No search results found
+  <% else %>
+    Search results
+  <% end %>
+  for <q><%= @query %></q>
+</h2>
+<%= erb :search_form %>
+<%= erb :results unless @results.empty? %>

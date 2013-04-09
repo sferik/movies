@@ -63,9 +63,13 @@
       <% end %>
     </ul>
   </dd>
-  <% unless @query.nil? || @query.empty? %>
-    <a href="/search?q=<%= URI.escape(@query) %>">
-      Back to search results for <q><%= @query %></q>
-    </a>
-  <% end %>
 </dl>
+<% unless @results.empty? %>
+  <h3>Related movies</h3>
+  <%= erb :results %>
+<% end %>
+<% unless @query.nil? || @query.empty? %>
+  <a href="/search?q=<%= URI.escape(@query) %>">
+    Back to search results for <q><%= @query %></q>
+  </a>
+<% end %>
