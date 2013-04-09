@@ -100,10 +100,11 @@ img#poster {
   max-width: 200px;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 5px;
 }
 
 #movie h2 {
+  font-family: "Permanent Marker", sans-serif;
   font-size: 32px;
   font-weight: 400;
   margin: 0 auto;
@@ -121,6 +122,8 @@ img#poster {
 }
 
 blockquote {
+  font-family: "Special Elite", monospace;
+  line-height: 22px;
   font-size: 14px;
   margin: 0 0 10px 0;
   text-align: justify;
@@ -133,10 +136,9 @@ dl {
 dt {
   clear: left;
   float: left;
-  font-size: 12px;
-  line-height: 2em;
   text-align: right;
   width: 150px;
+  font-size: 13px;
 }
 
 dt:after {
@@ -144,11 +146,11 @@ dt:after {
 }
 
 dt, dd {
-  line-height: 24px;
+  line-height: 2em;
 }
 
 dd {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   margin-left: 160px;
 }
@@ -158,7 +160,7 @@ dd ol, dd ul {
 }
 
 dd li {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 footer {
