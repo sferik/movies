@@ -7,16 +7,21 @@
     <link rel="stylesheet" type="text/css" href="/css/application.css">
   </head>
   <body id="<%= @page %>">
-    <header>
-      <h1>
-        <%= @app_name %>
-      </h1>
-    </header>
-    <div id="main">
-      <%= yield %>
+    <div id="outer-container">
+      <div id="inner-container">
+        <header>
+          <h1>
+            <%= @app_name %>
+          </h1>
+          <%= erb :search_form %>
+        </header>
+        <div id="main">
+          <%= yield %>
+        </div>
+        <footer>
+          Copyright &copy; <%= Date.today.year %> <%= @app_name %>
+        </footer>
+      </div>
     </div>
-    <footer>
-      Copyright &copy; <%= Date.today.year %> <%= @app_name %>
-    </footer>
   </body>
 </html>

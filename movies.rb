@@ -1,13 +1,9 @@
-require 'sinatra/base'
-require 'sinatra/reloader'
-require 'open-uri'
+require 'date'
 require 'json'
+require 'open-uri'
+require 'sinatra/base'
 
 class Movies < Sinatra::Base
-  configure :development do
-    register Sinatra::Reloader
-  end
-
   before do
     @page = :default
     @app_name = "Movies App"
@@ -29,7 +25,7 @@ class Movies < Sinatra::Base
     file = open("http://www.omdbapi.com/?s=#{URI.escape(@query)}")
     @results = JSON.load(file.read)["Search"] || []
     if @results.size == 1 || (@results.size > 1 && @button == "lucky")
-      redirect "/movies?id=#{@results.first["imdbID"]}"
+      redirect "/movies?id=#{URI.escape(@results.first["imdbID"])}&q=#{URI.escape(@query)}"
     else
       erb @page
     end
@@ -39,15 +35,16 @@ class Movies < Sinatra::Base
     @page = :movie
     @id = params[:id]
     @query = params[:q] || ""
-    file = open("http://www.omdbapi.com/?i=#{URI.escape(@id)}&tomatoes=true")
+    file = open("http://www.omdbapi.com/?i=#{URI.escape(@id)}&tomatoes=true&plot=full")
     @result = JSON.load(file.read)
     file = open("http://www.omdbapi.com/?s=#{URI.escape(@result["Title"])}")
     @results = JSON.load(file.read)["Search"] || []
     @results.reject!{|movie| movie["imdbID"] == @result["imdbID"]}
     @page_title += ": #{@result["Title"]}"
     @genres = @result["Genre"].split(", ")
-    @actors = @result["Actors"].split(", ")
     @directors = @result["Director"].split(", ")
+    @actors = @result["Actors"].split(", ")
+    @writers = @result["Writer"].split(", ")
     erb :movie
   end
 

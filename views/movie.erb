@@ -9,11 +9,17 @@
 <div id="box">
   <dl>
     <dt>
-      Year
+      Released
     </dt>
-    <dd>
-      <%= @result["Year"] %>
-    </dd>
+    <% if @result["Released"].nil? || @result["Released"] == "N/A" %>
+      <dd>
+        <%= @result["Year"] %>
+      </dd>
+    <% else %>
+      <dd>
+        <%= Time.parse(@result["Released"]).strftime("%A, %B %e, %Y") %>
+      </dd>
+    <% end %>
     <% unless @result["Rated"].nil? || @result["Rated"] == "N/A" %>
       <dt>
         Rating
@@ -48,7 +54,7 @@
         IMDB Rating
       </dt>
       <dd>
-        <%= "⭐" * @result["imdbRating"].to_i %>
+        <%= "⭐" * @result["imdbRating"].to_f.round %>
       </dd>
     <% end %>
     <% unless @result["tomatoRating"].nil? || @result["tomatoRating"] == "N/A" %>
@@ -56,7 +62,20 @@
         Rotten Tomatoes Rating
       </dt>
       <dd>
-        <%= "🍅" * @result["tomatoRating"].to_i %>
+        <%= "🍅" * @result["tomatoRating"].to_f.round %>
+      </dd>
+    <% end %>
+    <% unless @directors.empty? || @directors.first == "N/A" %>
+      <dt>
+        <%= "Director" if @directors.size == 1 %>
+        <%= "Directors" if @directors.size > 1 %>
+      </dt>
+      <dd>
+        <ul>
+          <% @directors.each do |director| %>
+            <li><%= director %></li>
+          <% end %>
+        </ul>
       </dd>
     <% end %>
     <% unless @actors.empty? || @actors.first == "N/A" %>
@@ -72,18 +91,18 @@
         </ul>
         </dd>
     <% end %>
-    <% unless @directors.empty? || @directors.first == "N/A" %>
+    <% unless @writers.empty? || @writers.first == "N/A" %>
       <dt>
-        <%= "Director" if @directors.size == 1 %>
-        <%= "Directors" if @directors.size > 1 %>
+        <%= "Writer" if @writers.size == 1 %>
+        <%= "Writers" if @writers.size > 1 %>
       </dt>
       <dd>
         <ul>
-          <% @directors.each do |director| %>
-            <li><%= director %></li>
+          <% @writers.each do |writer| %>
+            <li><%= writer %></li>
           <% end %>
         </ul>
-      </dd>
+        </dd>
     <% end %>
   </dl>
   <% if @result["Poster"].nil? || @result["Poster"] == "N/A" %>

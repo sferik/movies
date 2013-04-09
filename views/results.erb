@@ -1,4 +1,4 @@
-<ol>
+<ol id="results">
   <% @results.each do |result| %>
     <li>
       <a href="/movies?id=<%= result["imdbID"] %>&amp;q=<%= URI.escape(@query) %>"><%= result["Title"] %></a>

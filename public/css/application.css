@@ -1,14 +1,13 @@
 body {
   font-family: Lato, Helvetica, Arial, sans-serif;
   font-weight: 300;
-  padding-bottom: 36px;
 }
 
 h1 {
   line-height: 1;
   font-size: 34px;
   font-weight: 300;
-  margin: 10px auto;
+  margin: 0 0 10px;
 }
 
 h2 {
@@ -27,12 +26,12 @@ ol, ul {
   padding-left: 0;
 }
 
-#serp li {
-  margin: 10px 0;
-}
-
 li {
   list-style-type: none;
+}
+
+#results li {
+  margin: 10px 0;
 }
 
 a {
@@ -44,6 +43,32 @@ a:hover {
   text-decoration: underline;
 }
 
+body {
+  background-color: #ecd05e;
+  margin: 0;
+  padding: 0;
+}
+
+#outer-container {
+  margin: auto;
+  width: 600px;
+}
+
+#inner-container {
+  background-color: white;
+  bottom: 16px;
+  box-shadow: 0px 0px 40px #999;
+  overflow: scroll;
+  padding: 30px;
+  position: absolute;
+  top: 0;
+  width: 600px;
+}
+
+header {
+  background-color: white;
+}
+
 #home header, #home #main, footer {
   text-align: center;
 }
@@ -52,9 +77,22 @@ a:hover {
   margin: 5px auto;
 }
 
+#movie header {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+#movie header h1, #movie header button {
+  display: none;
+}
+
+#movie #main {
+}
+
 #movie img {
   border: 1px solid #ccc;
-  box-shadow: 0px 0px 10px #ccc;
+  box-shadow: 0px 0px 10px #999;
   margin-left: 40px;
   max-width: 200px;
   position: absolute;
@@ -63,7 +101,7 @@ a:hover {
 }
 
 #movie h2 {
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 400;
   margin: 0 auto;
 }
@@ -74,16 +112,15 @@ a:hover {
 }
 
 #movie #box {
-  margin-top: 20px;
+  margin-top: 10px;
   position: relative;
   width: 600px;
 }
 
 blockquote {
+  font-size: 14px;
   margin: 0 0 10px 0;
-  padding: 10px 3px;
   text-align: justify;
-  width: 594px;
 }
 
 dl {
