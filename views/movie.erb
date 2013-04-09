@@ -1,0 +1,98 @@
+<h2>
+  <%= @result["Title"] %>
+</h2>
+<% unless @result["Plot"].nil? || @result["Plot"] == "N/A" %>
+  <blockquote>
+    <%= @result["Plot"] %>
+  </blockquote>
+<% end %>
+<div id="box">
+  <dl>
+    <dt>
+      Year
+    </dt>
+    <dd>
+      <%= @result["Year"] %>
+    </dd>
+    <% unless @result["Rated"].nil? || @result["Rated"] == "N/A" %>
+      <dt>
+        Rating
+      </dt>
+      <dd>
+        <%= @result["Rated"] %>
+      </dd>
+    <% end %>
+    <% unless @result["Runtime"].nil? || @result["Runtime"] == "N/A" %>
+      <dt>
+        Runtime
+      </dt>
+      <dd>
+        <%= @result["Runtime"] %>
+      </dd>
+    <% end %>
+    <% unless @genres.empty? || @genres.first == "N/A" %>
+      <dt>
+        <%= "Genre" if @genres.size == 1 %>
+        <%= "Genres" if @genres.size > 1 %>
+      </dt>
+      <dd>
+        <ul>
+          <% @genres.each do |genre| %>
+            <li><%= genre %></li>
+          <% end %>
+        </ul>
+        </dd>
+    <% end %>
+    <% unless @result["imdbRating"].nil? || @result["imdbRating"] == "N/A" %>
+      <dt>
+        IMDB Rating
+      </dt>
+      <dd>
+        <%= "⭐" * @result["imdbRating"].to_i %>
+      </dd>
+    <% end %>
+    <% unless @result["tomatoRating"].nil? || @result["tomatoRating"] == "N/A" %>
+      <dt>
+        Rotten Tomatoes Rating
+      </dt>
+      <dd>
+        <%= "🍅" * @result["tomatoRating"].to_i %>
+      </dd>
+    <% end %>
+    <% unless @actors.empty? || @actors.first == "N/A" %>
+      <dt>
+        <%= "Actor" if @actors.size == 1 %>
+        <%= "Actors" if @actors.size > 1 %>
+      </dt>
+      <dd>
+        <ul>
+          <% @actors.each do |actor| %>
+            <li><%= actor %></li>
+          <% end %>
+        </ul>
+        </dd>
+    <% end %>
+    <% unless @directors.empty? || @directors.first == "N/A" %>
+      <dt>
+        <%= "Director" if @directors.size == 1 %>
+        <%= "Directors" if @directors.size > 1 %>
+      </dt>
+      <dd>
+        <ul>
+          <% @directors.each do |director| %>
+            <li><%= director %></li>
+          <% end %>
+        </ul>
+      </dd>
+    <% end %>
+  </dl>
+  <% if @result["Poster"].nil? || @result["Poster"] == "N/A" %>
+    <img src="/images/default-poster.jpg" alt="No poster found" title="No poster found">
+  <% else %>
+    <img src="<%= @result["Poster"] %>" alt="Movie poster for <%= @result["Title"] %>" title="Movie poster for <%= @result["Title"] %>">
+  <% end %>
+</div>
+<% unless @results.empty? %>
+  <h3>Related movies</h3>
+  <%= erb :results %>
+<% end %>

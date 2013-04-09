@@ -1,18 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>
-      <%= @page_title %>
-    </title>
     <meta charset="utf-8">
+    <title><%= @page_title %></title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/css/application.css">
   </head>
-  <body>
+  <body id="<%= @page %>">
     <header>
       <h1>
         <%= @app_name %>
       </h1>
     </header>
-    <%= yield %>
+    <div id="main">
+      <%= yield %>
+    </div>
     <footer>
       Copyright &copy; <%= Date.today.year %> <%= @app_name %>
     </footer>
