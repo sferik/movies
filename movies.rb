@@ -43,7 +43,7 @@ class Movies < Sinatra::Base
     @result = JSON.load(file.read)
     file = open("http://www.omdbapi.com/?s=#{URI.escape(@result["Title"])}")
     @results = JSON.load(file.read)["Search"] || []
-    @results.reject!{|movie| movie["Title"] == @result["Title"]}
+    @results.reject!{|movie| movie["imdbID"] == @result["imdbID"]}
     @page_title += ": #{@result["Title"]}"
     @genres = @result["Genre"].split(", ")
     @actors = @result["Actors"].split(", ")
