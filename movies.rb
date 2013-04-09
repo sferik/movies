@@ -26,8 +26,13 @@ class Movies < Sinatra::Base
     if @button == "lucky"
       file = open("http://www.omdbapi.com/?t=#{URI.escape(@query)}")
       @result = JSON.load(file.read)
-      set_actors_and_directors(@result)
-      erb :detail
+      if @result["Actors"] && @result["Directors"]
+        set_actors_and_directors(@result)
+        erb :detail
+      else
+        @results = []
+        erb :results
+      end
     else
       file = open("http://www.omdbapi.com/?s=#{URI.escape(@query)}")
       @results = JSON.load(file.read)["Search"] || []
