@@ -54,7 +54,7 @@
         IMDB Rating
       </dt>
       <dd>
-        <%= "⭐" * @result["imdbRating"].to_f.round %>
+        <%= '<img src="/images/star.png" class="emoji" alt="⭐" title="⭐">' * @result["imdbRating"].to_f.round %>
       </dd>
     <% end %>
     <% unless @result["tomatoRating"].nil? || @result["tomatoRating"] == "N/A" %>
@@ -62,7 +62,7 @@
         Rotten Tomatoes Rating
       </dt>
       <dd>
-        <%= "🍅" * @result["tomatoRating"].to_f.round %>
+        <%= '<img src="/images/tomato.png" class="emoji" alt="🍅" title="🍅">' * @result["tomatoRating"].to_f.round %>
       </dd>
     <% end %>
     <% unless @directors.empty? || @directors.first == "N/A" %>
@@ -106,9 +106,9 @@
     <% end %>
   </dl>
   <% if @result["Poster"].nil? || @result["Poster"] == "N/A" %>
-    <img src="/images/default-poster.jpg" alt="No poster found" title="No poster found">
+    <img src="/images/default-poster.jpg" alt="No poster found" title="No poster found" id="poster">
   <% else %>
-    <img src="<%= @result["Poster"] %>" alt="Movie poster for <%= @result["Title"] %>" title="Movie poster for <%= @result["Title"] %>">
+    <img src="<%= @result["Poster"] %>" alt="Movie poster for <%= @result["Title"] %>" title="Movie poster for <%= @result["Title"] %>" id="poster">
   <% end %>
 </div>
 <% unless @results.empty? %>
